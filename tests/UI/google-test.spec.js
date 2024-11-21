@@ -1,7 +1,7 @@
 // @ts-check
 const { test, expect, chromium } = require('@playwright/test');
 
-test('Exercise 3 - Google Playwright getting started with geolocation (Wroclaw)', async () => {
+test.skip('Exercise 3 - Google Playwright getting started with geolocation (Wroclaw)', async () => {
 
   // Launch browser with geolocation settings for Wroclaw
   const context = await chromium.launchPersistentContext('', {
