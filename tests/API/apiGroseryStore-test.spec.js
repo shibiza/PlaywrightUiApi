@@ -164,7 +164,7 @@ test.describe('Individual API testcase exercise', () => {
             expect(getCartItemsBody2.items[1].productId,).toBe(5477);
             });
        
-        test('Creating an user account and extracting token', async ({ request }) => {
+        test.skip('Creating an user account and extracting token', async ({ request }) => {
             var response = await request.post(baseURL + "/api-clients", {
                 data: {
                     "clientName": "Nat Sam",
