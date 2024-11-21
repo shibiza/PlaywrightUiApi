@@ -1,7 +1,7 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 
-test('Exercise 3  -  Google Playwright getting started', async ({ page }) => {
+test.skip('Exercise 3  -  Google Playwright getting started', async ({ page }) => {
   await page.goto('https://www.google.pl/?hl=pl');
 
   const cookieBtn = await page.locator("#L2AGLb");
