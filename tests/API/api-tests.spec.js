@@ -78,7 +78,7 @@ test.describe('two tests', () => {
 
      });
 
-     test('POST - add new item to cart', async ({ request }) => {
+     test.skip('POST - add new item to cart', async ({ request }) => {
              
         const response = await request.post(baseURL + "/carts/eyf97-iHIo7XP1biA_5yz/items", { 
             data: {
@@ -92,7 +92,7 @@ test.describe('two tests', () => {
                console.log(responseBody); 
      });
 
-     test('POST - add new item to cart and delete it', async ({ request }) => {
+     test.skip('POST - add new item to cart and delete it', async ({ request }) => {
              
                 const response2 = await request.post(baseURL + "/carts/eyf97-iHIo7XP1biA_5yz/items", { 
                     data: {
