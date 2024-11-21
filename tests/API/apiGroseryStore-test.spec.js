@@ -164,14 +164,19 @@ test.describe('Individual API testcase exercise', () => {
             expect(getCartItemsBody2.items[1].productId,).toBe(5477);
             });
        
-        test.skip('Creating an user account and extracting token', async ({ request }) => {
+        test('Creating an user account and extracting token', async ({ request }) => {
+           
+            const randomNum = Math.floor(Math.random() * 1000000); // Removes decimal point
+            let randomEmail = `natSam${randomNum}@example.com`;
+            console.log(`random email is: ${randomEmail}`);
+            
             var response = await request.post(baseURL + "/api-clients", {
                 data: {
                     "clientName": "Nat Sam",
-                    "clientEmail": "natSam@example.com"
+                    "clientEmail": randomEmail // Use the random email
                 }
             });
-                    
+                  
             console.log('Response status:', response.status()); // Log the status and full response body for debugging
             var responseBody = await response.json();
             console.log('Response Body:', responseBody);
@@ -181,7 +186,7 @@ test.describe('Individual API testcase exercise', () => {
             expect(responseBody.accessToken).not.toBeNull();
         
             // If everything is fine, store the token
-            token = responseBody.accessToken;
+            var  token = responseBody.accessToken;
             console.log("✅ TOKEN:", token);
         });
 });
