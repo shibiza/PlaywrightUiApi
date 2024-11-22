@@ -1,28 +1,32 @@
 // @ts-check
-const { test, expect, chromium } = require('@playwright/test');
+const { test, expect } = require('@playwright/test');
 
-test.skip('Exercise 3 - Google Playwright getting started with geolocation (Wroclaw)', async () => {
-
-  // Launch browser with geolocation settings for Wroclaw
-  const context = await chromium.launchPersistentContext('', {
-    geolocation: { latitude: 51.107883, longitude: 17.038538 },
-    permissions: ['geolocation'],
-  });
-
-  const page = await context.newPage();
-
-  await page.goto('https://www.google.pl/?hl=pl');
+test('Exercise 3 - Google Playwright getting started with geolocation (Wroclaw)', async ({ page }) => {
+  await page.goto('https://www.google.com/');
 
   const cookieBtn = await page.locator("#L2AGLb");
-  if(await cookieBtn.isVisible()){
-  await cookieBtn.click({timeout: 5000 });
-  }else {
+  if (await cookieBtn.isVisible()) {
+    await cookieBtn.click();
+  } else {
     console.log('Cookie button not visible');
   }
-  
-  const searchBar = await page.getByRole('textbox', { name: 'Search' });
-  await searchBar.fill('Playwright getting started');
 
-  // Clean up context
-  await context.close();
+  const searchBar = await page.getByRole('textbox', { name: 'Search' });
+  const searchBar2 = await page.getByLabel('Szukaj', { exact: true });
+
+ if(await searchBar.isVisible()){
+  await searchBar.fill('Playwright getting started');
+  console.log("searchbar in english is working");
+  await searchBar.press('Enter');
+}
+
+  else if (await searchBar2.isVisible()){
+    await searchBar2.fill('Playwright getting started');
+    console.log("searchbar2 in polish is working");
+    await searchBar2.press('Enter');
+
+  }else {
+    throw new Error("Search bar is not found");
+  }
+
 });

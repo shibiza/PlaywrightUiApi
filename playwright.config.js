@@ -32,13 +32,24 @@ module.exports = defineConfig({
   },
 
   /* Configure projects for major browsers */
-  projects: [
+   projects: [
     {
       name: 'chromium',
       use: {
         trace: "on",
          ...devices['Desktop Chrome'] },
     },
+    {
+      name: 'chromium-wroclaw',
+      use: {
+        ...devices['Desktop Chrome'],
+        geolocation: { latitude: 51.107883, longitude: 17.038538 },
+        permissions: ['geolocation'],
+      },
+    }
+
+
+
 
     // {
     //   name: 'firefox',
