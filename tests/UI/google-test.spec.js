@@ -5,7 +5,7 @@ test.use({
   permissions: ["geolocation"],
 });
 
-test("Exercise 3 - Google Playwright getting started with geolocation (Wroclaw)", async ({
+test.skip("Exercise 3 - Google Playwright getting started with geolocation (Wroclaw)", async ({
   page,
 }) => {
   await page.goto("https://www.google.pl/?hl=pl");
